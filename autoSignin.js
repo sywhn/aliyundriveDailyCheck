@@ -103,26 +103,6 @@ function sign_in(access_token, remarks) {
     })
 }
 
-// 领取奖励
-function getReward(access_token, signInDay) {
-  return axios(rewardURL, {
-    method: 'POST',
-    data: { signInDay },
-    headers: {
-      authorization: access_token,
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(d => d.data)
-    .then(json => {
-      if (!json.success) {
-        return Promise.reject(json.message)
-      }
-
-      return json.result
-    })
-}
-
 // 获取环境变量
 async function getRefreshToken() {
   let instance = null
